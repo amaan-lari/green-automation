@@ -1,0 +1,18 @@
+name: Seed Database (run once)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  seed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Upload existing DB as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: registrations-db
+          path: registrations.db
+          retention-days: 90
+          overwrite: true
