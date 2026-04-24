@@ -1,0 +1,6 @@
+playwright
+pillow
+anthropic
+phonenumbers
+requests
+pydantic
