@@ -13,6 +13,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Restore database from previous run
+        uses: actions/download-artifact@v4
+        with:
+          name: registrations-db
+        continue-on-error: true   # first run won't have an artifact yet
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -27,3 +33,12 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python main.py --count 200 --resume
+
+      - name: Save database for next run
+        if: always()   # save even if the bot fails mid-run
+        uses: actions/upload-artifact@v4
+        with:
+          name: registrations-db
+          path: registrations.db
+          retention-days: 90
+          overwrite: true
