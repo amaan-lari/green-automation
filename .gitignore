@@ -4,7 +4,7 @@ __pycache__/
 .venv/
 
 # Runtime outputs
-# *.db  — temporarily commented out to seed the artifact
+*.db
 *.log
 *.csv
 images/
