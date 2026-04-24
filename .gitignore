@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Runtime outputs
+*.db
+*.log
+*.csv
+images/
+.cycle_state
+
+# IDE
+.idea/
+.vscode/
